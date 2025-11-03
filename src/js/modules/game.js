@@ -1,5 +1,6 @@
 import {Snake} from './snake.js';
 import {Food} from "./food.js";
+import { MobileControls } from '../mobile-controls.js'; // ПРАВИЛЬНЫЙ ПУТЬ
 
 export class Game {
 
@@ -11,16 +12,15 @@ export class Game {
   food = null;
   interval = null;
   scoreElement = null;
+  mobileControls = null;
 
   constructor(context, settings) {
     this.context = context;
-
     this.positionsCount = settings.positionsCount;
     this.positionsSize = settings.positionsSize;
 
     this.scoreElement = document.getElementById('score');
 
-    // ДОБАВЬТЕ ПРОВЕРКУ ЭЛЕМЕНТА
     const startButton = document.getElementById('start');
     if (startButton) {
       startButton.onclick = () => {
@@ -41,6 +41,9 @@ export class Game {
 
     this.food = new Food(this.context, this.positionsCount, this.positionsSize);
     this.snake = new Snake(this.context, this.positionsCount, this.positionsSize);
+
+    // Подключаем мобильное управление
+    this.mobileControls = new MobileControls(this.snake);
 
     this.food.setNewFoodPosition();
     this.interval = setInterval(this.gameProcess.bind(this), 100);

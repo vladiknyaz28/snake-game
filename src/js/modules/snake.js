@@ -248,13 +248,5 @@ export class Snake {
 //     return result;
 //   }
 
-  checkNewPositionForCollision(newHeadPosition) {
-    for (let i = 0; i < this.snake.length; i++) {
-      if (newHeadPosition.x === this.snake[i].x && newHeadPosition.y === this.snake[i].y) {
-        return true;
-      }
-    }
-    return false;
-  }
-}
 
+}

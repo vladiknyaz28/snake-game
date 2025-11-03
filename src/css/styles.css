@@ -3,10 +3,11 @@ body {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   margin: 0;
   padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 #container {
@@ -15,6 +16,7 @@ body {
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  margin-bottom: 20px;
 }
 
 .info {
@@ -51,4 +53,78 @@ canvas {
   border: 3px solid #333;
   border-radius: 10px;
   background: #000;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Мобильное управление */
+.mobile-controls {
+  display: none;
+  grid-template-areas:
+    ". up ."
+    "left . right"
+    ". down .";
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 15px;
+  margin-top: 20px;
+  max-width: 250px;
+  padding: 20px;
+}
+
+.mobile-btn {
+  width: 70px;
+  height: 70px;
+  background: #4CAF50;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.mobile-btn:active {
+  background: #45a049;
+  transform: scale(0.95);
+}
+
+.btn-up { grid-area: up; }
+.btn-left { grid-area: left; }
+.btn-right { grid-area: right; }
+.btn-down { grid-area: down; }
+
+/* Показываем кнопки только на мобильных */
+@media (max-width: 768px) {
+  .mobile-controls {
+    display: grid;
+  }
+
+  body {
+    padding: 10px;
+    justify-content: flex-start;
+  }
+
+  .info {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .button {
+    padding: 15px 25px;
+    font-size: 18px;
+  }
+
+  .score {
+    font-size: 24px;
+  }
+
+  #container {
+    margin-bottom: 10px;
+  }
 }
