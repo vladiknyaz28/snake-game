@@ -8,4 +8,4 @@
 3. Собирайте еду и растите!
 4. Отталкивайтесь от стенок!
 
-[Играть!](https://ВАШ-USERNAME.github.io/snake-game)
+[Играть!](https://vladiknyaz28.github.io/snake-game/)
