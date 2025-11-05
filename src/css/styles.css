@@ -60,36 +60,47 @@ canvas {
 .mobile-controls {
   display: none;
   position: fixed;
-  bottom: 20px;
+  bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
-  gap: 10px;
+  grid-template-areas:
+    ". up ."
+    "left . right"
+    ". down .";
+  gap: 20px;
+  z-index: 1000;
+  touch-action: manipulation;
 }
 
 .mobile-btn {
-  width: 60px;
-  height: 60px;
-  font-size: 24px;
-  background: rgba(0, 0, 0, 0.7);
+  width: 70px;
+  height: 70px;
+  font-size: 28px;
+  font-weight: bold;
+  background: rgba(0, 100, 0, 0.8);
   color: white;
-  border: none;
+  border: 3px solid white;
   border-radius: 50%;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  touch-action: manipulation;
 }
 
-/* Показываем кнопки только на мобильных */
-@media (max-width: 768px) {
+.mobile-btn:active {
+  background: rgba(0, 150, 0, 0.9);
+  transform: scale(0.95);
+}
+
+.btn-up { grid-area: up; }
+.btn-left { grid-area: left; }
+.btn-right { grid-area: right; }
+.btn-down { grid-area: down; }
+
+@media (max-width: 768px) and (hover: none) and (pointer: coarse) {
   .mobile-controls {
     display: grid;
-    grid-template-areas:
-      ". up ."
-      "left . right"
-      ". down .";
-    gap: 15px;
   }
-
-  .btn-up { grid-area: up; }
-  .btn-left { grid-area: left; }
-  .btn-right { grid-area: right; }
-  .btn-down { grid-area: down; }
 }
